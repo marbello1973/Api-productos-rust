@@ -1,7 +1,11 @@
 # API PRODUCTOS 
 
 ## RESTful API endpoints
+> Url principal
+``` 
+http://0.0.0.0:3000
 
+```
 ### Productos
 - GET    /api/v1/products
 - GET    /api/v1/products/:id
@@ -57,5 +61,4 @@
 - GET     /api/v1/products/bestsellers           // Más vendidos
 - GET     /api/v1/products/recent                // Productos recientes
 - GET     /api/v1/products/related/:id           // Productos relacionados
-- 
 
