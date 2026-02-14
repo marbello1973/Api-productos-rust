@@ -42,17 +42,17 @@ http://0.0.0.0:3000
 
 ### Todos en GET /api/v1/products con query params
 - GET /api/v1/products?
-    category_id=&          // Filtrar por categoría ID
-    category_slug=&        // Filtrar por slug de categoría
-    brand_id=&             // Filtrar por marca ID
-    brand_slug=&           // Filtrar por slug de marca
-    min_price=&            // Precio mínimo
-    max_price=&            // Precio máximo
-    search=&               // Búsqueda en nombre/descripción
-    status=&               // active/inactive/draft
-    in_stock=&             // true/false
-    featured=&             // Productos destacados
-    bestsellers            // Más vendidos
+  -     category_id=&          // Filtrar por categoría ID
+  -     category_slug=&        // Filtrar por slug de categoría
+  -     brand_id=&             // Filtrar por marca ID
+  -     brand_slug=&           // Filtrar por slug de marca
+  -     min_price=&            // Precio mínimo
+  -     max_price=&            // Precio máximo
+  -     search=&               // Búsqueda en nombre/descripción
+  -     status=&               // active/inactive/draft
+  -     in_stock=&             // true/false
+  -     featured=&             // Productos destacados
+  -     bestsellers            // Más vendidos
 
 ### Endpoints adicionals utiles 
 - GET     /api/v1/products/stats                 // Estadísticas (total, por categoría, etc)
