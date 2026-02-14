@@ -4,7 +4,6 @@
 > Url principal
 ``` 
 http://0.0.0.0:3000
-
 ```
 ### Productos
 - GET    /api/v1/products
