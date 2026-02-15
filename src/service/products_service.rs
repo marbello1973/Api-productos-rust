@@ -3,8 +3,10 @@ use uuid::Uuid;
 use crate::{
     connexion::state::AppState,
     error::ConfigError,
-    models::product::Product,
-    repository::products_repository::{get_product_by_id_repository, getall_products_reository},
+    models::product::{Product, ProductWithSlug},
+    repository::products_repository::{
+        get_product_by_id_repository, get_product_by_slug_repository, getall_products_reository,
+    },
 };
 
 pub async fn getall_products_service(state: &AppState) -> Result<Vec<Product>, ConfigError> {
@@ -24,7 +26,15 @@ pub async fn get_product_by_id_service(
             product_id
         ))),
     }
-    // Ok(product)
 }
 
-// pub async fn get_product_by_id_repository(
+pub async fn get_product_by_slug_service(
+    state: AppState,
+    slug: String,
+) -> Result<Vec<ProductWithSlug>, ConfigError> {
+    let product = get_product_by_slug_repository(&state.db, slug.clone()).await?;
+    if product.is_empty() {
+        return Err(ConfigError::NotFound("Not product".to_string()));
+    }
+    Ok(product)
+}
