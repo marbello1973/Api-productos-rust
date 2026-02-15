@@ -9,16 +9,16 @@
 
 ## 📦 Endpoints de Productos
 
-| Método   | Endpoint                      | Descripción        | Estado                                 |
-| :------- | :---------------------------- | :----------------- | :------------------------------------- |
-| `GET`    | `/api/v1/products`            | Listar todos       | [x] ![Ready](https://img.shields.io)   |
-| `GET`    | `/api/v1/products/:id`        | Buscar por ID      | [x] ![Ready](https://img.shields.io)   |
-| `GET`    | `/api/v1/products/slug/:slug` | Buscar por Slug    | [x] ![Ready](https://img.shields.io)   |
-| `GET`    | `/api/v1/products/sku/:sku`   | Buscar por SKU     | [ ] ![Pending](https://img.shields.io) |
-| `POST`   | `/api/v1/products`            | Crear nuevo        | [ ] ![Pending](https://img.shields.io) |
-| `PUT`    | `/api/v1/products/:id`        | Actualizar total   | [ ] ![Pending](https://img.shields.io) |
-| `PATCH`  | `/api/v1/products/:id`        | Actualizar parcial | [ ] ![Pending](https://img.shields.io) |
-| `DELETE` | `/api/v1/products/:id`        | Soft Delete        | [ ] ![Pending](https://img.shields.io) |
+| Método   | Endpoint                      | Descripción        | Estado                                                           |
+| :------- | :---------------------------- | :----------------- | :--------------------------------------------------------------- |
+| `GET`    | `/api/v1/products`            | Listar todos       | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-orange) |
+| `GET`    | `/api/v1/products/:id`        | Buscar por ID      | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-orange) |
+| `GET`    | `/api/v1/products/slug/:slug` | Buscar por Slug    | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-orange) |
+| `GET`    | `/api/v1/products/sku/:sku`   | Buscar por SKU     | [ ] ![Pending](https://img.shields.io)                           |
+| `POST`   | `/api/v1/products`            | Crear nuevo        | [ ] ![Pending](https://img.shields.io)                           |
+| `PUT`    | `/api/v1/products/:id`        | Actualizar total   | [ ] ![Pending](https://img.shields.io)                           |
+| `PATCH`  | `/api/v1/products/:id`        | Actualizar parcial | [ ] ![Pending](https://img.shields.io)                           |
+| `DELETE` | `/api/v1/products/:id`        | Soft Delete        | [ ] ![Pending](https://img.shields.io)                           |
 
 ---
 
@@ -46,7 +46,7 @@
 
 _Implementados en `GET /api/v1/products?`_
 
-- [x] `category_id` / `category_slug`
+- [ ] `category_id` / `category_slug`
 - [ ] `brand_id` / `brand_slug`
 - [ ] `min_price` / `max_price`
 - [ ] `search` (Búsqueda por texto)
