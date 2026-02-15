@@ -11,8 +11,8 @@ http://0.0.0.0:3000
 ### Productos
 
 - GET /api/v1/products ![Hecho](https://img.shields.io)
-- GET /api/v1/products/:id
-- GET /api/v1/products/slug/:slug
+- GET /api/v1/products/:id ![Listo](https://img.shields.io)
+- GET /api/v1/products/slug/:slug ![](https://raw.githubusercontent.com)
 - GET /api/v1/products/sku/:sku
 - POST /api/v1/products
 - PUT /api/v1/products/:id
