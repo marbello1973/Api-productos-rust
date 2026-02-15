@@ -1,13 +1,15 @@
 use crate::{
     connexion::state::AppState,
     error::ConfigError,
-    models::product::Product,
-    service::products_service::{get_product_by_id_service, getall_products_service},
+    models::product::{Product, ProductWithSlug},
+    service::products_service::{
+        get_product_by_id_service, get_product_by_slug_service, getall_products_service,
+    },
 };
 
 use axum::{
-    extract::{Path, State},
     Json,
+    extract::{Path, State},
 };
 use uuid::Uuid;
 
@@ -33,4 +35,10 @@ pub async fn get_product_by_id_hanlder(
     Ok(Json(product))
 }
 
-// pub async fn get_product_by_id_repository(
+pub async fn get_product_by_slug_handler(
+    State(state): State<AppState>,
+    Path(slug): Path<String>,
+) -> Result<Json<Vec<ProductWithSlug>>, ConfigError> {
+    let products = get_product_by_slug_service(state, slug).await?;
+    Ok(Json(products))
+}

@@ -1,6 +1,6 @@
 use chrono::NaiveDateTime;
 use serde::{Deserialize, Serialize};
-use sqlx::{types::BigDecimal, FromRow};
+use sqlx::{FromRow, types::BigDecimal};
 use uuid::Uuid;
 
 #[derive(Debug, Serialize, Deserialize, FromRow, Clone)]
@@ -30,6 +30,13 @@ pub struct Product {
     pub stock_quantity: i32,
     pub status: String,
     pub created_at: NaiveDateTime,
+}
+
+#[derive(Debug, Serialize, Deserialize, FromRow, Clone)]
+pub struct ProductWithSlug {
+    pub id: Uuid,
+    pub name: String,
+    pub slug: String,
 }
 
 #[derive(Debug, Serialize, Deserialize, FromRow, Clone)]
