@@ -1,9 +1,10 @@
 use crate::{
     connexion::state::AppState,
     error::ConfigError,
-    models::product::{Product, ProductWithSlug},
+    models::product::{CreateProduct, Product, ProductWithSku, ProductWithSlug},
     service::products_service::{
-        get_product_by_id_service, get_product_by_slug_service, getall_products_service,
+        create_product_service, get_product_by_id_service, get_product_by_sku_service,
+        get_product_by_slug_service, getall_products_service,
     },
 };
 
@@ -41,4 +42,20 @@ pub async fn get_product_by_slug_handler(
 ) -> Result<Json<Vec<ProductWithSlug>>, ConfigError> {
     let products = get_product_by_slug_service(state, slug).await?;
     Ok(Json(products))
+}
+
+pub async fn get_product_by_sku_handler(
+    State(state): State<AppState>,
+    Path(sku): Path<String>,
+) -> Result<Json<Vec<ProductWithSku>>, ConfigError> {
+    let products_sku = get_product_by_sku_service(state, sku).await?;
+    Ok(Json(products_sku))
+}
+
+pub async fn create_product_handler(
+    State(state): State<AppState>,
+    Json(product): Json<CreateProduct>,
+) -> Result<Json<Product>, ConfigError> {
+    let product = create_product_service(state, product).await?;
+    Ok(Json(product))
 }
