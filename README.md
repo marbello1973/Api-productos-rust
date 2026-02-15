@@ -9,36 +9,36 @@
 
 ## 📦 Endpoints de Productos
 
-| Método   | Endpoint                      | Descripción        | Estado                                                           |
-| :------- | :---------------------------- | :----------------- | :--------------------------------------------------------------- |
-| `GET`    | `/api/v1/products`            | Listar todos       | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-orange) |
-| `GET`    | `/api/v1/products/:id`        | Buscar por ID      | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-orange) |
-| `GET`    | `/api/v1/products/slug/:slug` | Buscar por Slug    | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-orange) |
-| `GET`    | `/api/v1/products/sku/:sku`   | Buscar por SKU     | [ ] ![Pending](https://img.shields.io)                           |
-| `POST`   | `/api/v1/products`            | Crear nuevo        | [ ] ![Pending](https://img.shields.io)                           |
-| `PUT`    | `/api/v1/products/:id`        | Actualizar total   | [ ] ![Pending](https://img.shields.io)                           |
-| `PATCH`  | `/api/v1/products/:id`        | Actualizar parcial | [ ] ![Pending](https://img.shields.io)                           |
-| `DELETE` | `/api/v1/products/:id`        | Soft Delete        | [ ] ![Pending](https://img.shields.io)                           |
+| Método   | Endpoint                      | Descripción        | Estado                                                             |
+| :------- | :---------------------------- | :----------------- | :----------------------------------------------------------------- |
+| `GET`    | `/api/v1/products`            | Listar todos       | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-fedcba)   |
+| `GET`    | `/api/v1/products/:id`        | Buscar por ID      | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-fedcba)   |
+| `GET`    | `/api/v1/products/slug/:slug` | Buscar por Slug    | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-fedcba)   |
+| `GET`    | `/api/v1/products/sku/:sku`   | Buscar por SKU     | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `POST`   | `/api/v1/products`            | Crear nuevo        | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `PUT`    | `/api/v1/products/:id`        | Actualizar total   | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `PATCH`  | `/api/v1/products/:id`        | Actualizar parcial | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `DELETE` | `/api/v1/products/:id`        | Soft Delete        | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
 
 ---
 
 ## 💬 Reseñas (Reviews)
 
-| Método | Endpoint                       | Descripción                | Estado                                     |
-| :----- | :----------------------------- | :------------------------- | :----------------------------------------- |
-| `GET`  | `/api/v1/products/:id/reviews` | Ver reseñas de un producto | [ ] ![In Progress](https://img.shields.io) |
-| `POST` | `/api/v1/products/:id/reviews` | Agregar reseña             | [ ] ![Pending](https://img.shields.io)     |
-| `GET`  | `/api/v1/reviews/:id`          | Detalle de reseña          | [ ] ![Pending](https://img.shields.io)     |
+| Método | Endpoint                       | Descripción                | Estado                                                             |
+| :----- | :----------------------------- | :------------------------- | :----------------------------------------------------------------- |
+| `GET`  | `/api/v1/products/:id/reviews` | Ver reseñas de un producto | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `POST` | `/api/v1/products/:id/reviews` | Agregar reseña             | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `GET`  | `/api/v1/reviews/:id`          | Detalle de reseña          | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
 
 ---
 
 ## 🏷️ Marcas y Categorías
 
-| Método | Endpoint                      | Relación            | Estado                                 |
-| :----- | :---------------------------- | :------------------ | :------------------------------------- |
-| `GET`  | `/api/v1/brands`              | Listar marcas       | [ ] ![Pending](https://img.shields.io) |
-| `GET`  | `/api/v1/categories`          | Listar categorías   | [ ] ![Pending](https://img.shields.io) |
-| `GET`  | `/api/v1/brands/:id/products` | Productos por marca | [ ] ![Pending](https://img.shields.io) |
+| Método | Endpoint                      | Relación            | Estado                                                             |
+| :----- | :---------------------------- | :------------------ | :----------------------------------------------------------------- |
+| `GET`  | `/api/v1/brands`              | Listar marcas       | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `GET`  | `/api/v1/brands/:id/products` | Productos por marca | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `GET`  | `/api/v1/categories`          | Listar categorías   | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
 
 ---
 
