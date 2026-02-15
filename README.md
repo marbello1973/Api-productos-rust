@@ -10,7 +10,7 @@ http://0.0.0.0:3000
 
 ### Productos
 
-- GET /api/v1/products ✔️
+- [x] GET /api/v1/products ✔️
 - GET /api/v1/products/:id ✔️
 - GET /api/v1/products/slug/ ✔️
 - GET /api/v1/products/sku/sku
