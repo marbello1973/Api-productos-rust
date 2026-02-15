@@ -40,6 +40,13 @@ pub struct ProductWithSlug {
 }
 
 #[derive(Debug, Serialize, Deserialize, FromRow, Clone)]
+pub struct ProductWithSku {
+    pub id: Uuid,
+    pub name: String,
+    pub sku: String,
+}
+
+#[derive(Debug, Serialize, Deserialize, FromRow, Clone)]
 pub struct Review {
     pub id: Uuid,
     pub product_id: Uuid,
@@ -60,7 +67,7 @@ pub struct CreateBrand {
     pub slug: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, FromRow)]
 pub struct CreateProduct {
     pub sku: String,
     pub name: String,

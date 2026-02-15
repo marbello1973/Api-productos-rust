@@ -3,9 +3,10 @@ use uuid::Uuid;
 use crate::{
     connexion::state::AppState,
     error::ConfigError,
-    models::product::{Product, ProductWithSlug},
+    models::product::{CreateProduct, Product, ProductWithSku, ProductWithSlug},
     repository::products_repository::{
-        get_product_by_id_repository, get_product_by_slug_repository, getall_products_reository,
+        create_product_repository, get_product_by_id_repository, get_product_by_sku_repository,
+        get_product_by_slug_repository, getall_products_reository,
     },
 };
 
@@ -37,4 +38,29 @@ pub async fn get_product_by_slug_service(
         return Err(ConfigError::NotFound("Not product".to_string()));
     }
     Ok(product)
+}
+
+pub async fn get_product_by_sku_service(
+    state: AppState,
+    sku: String,
+) -> Result<Vec<ProductWithSku>, ConfigError> {
+    match get_product_by_sku_repository(&state.db, sku).await {
+        Ok(ok) => Ok(ok),
+        Err(_) => Err(ConfigError::NotFound("Not products sku".to_string())),
+    }
+    // let product_sku = get_product_by_sku_repository(&state.db, slug.clone()).await?;
+    // if product_sku.is_empty() {
+    // return Err(ConfigError::NotFound("Not product".to_string()));
+    // }
+    // Ok(product_sku)
+}
+
+pub async fn create_product_service(
+    state: AppState,
+    product: CreateProduct,
+) -> Result<Product, ConfigError> {
+    match create_product_repository(&state.db, product).await {
+        Ok(ok) => Ok(ok),
+        Err(_) => Err(ConfigError::InternalServerError(format!("Error"))),
+    }
 }

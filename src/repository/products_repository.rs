@@ -3,7 +3,7 @@ use uuid::Uuid;
 
 use crate::{
     error::ConfigError,
-    models::product::{Product, ProductWithSlug},
+    models::product::{CreateProduct, Product, ProductWithSku, ProductWithSlug},
 };
 
 const QUERY_PRODUCTS: &str = r#"
@@ -70,7 +70,7 @@ pub async fn get_product_by_slug_repository(
     pool: &PgPool,
     slug: String,
 ) -> Result<Vec<ProductWithSlug>, ConfigError> {
-    let products = sqlx::query_as::<_, ProductWithSlug>(QUERY_PRODUCTS_BYSLUG)
+    let products_slug = sqlx::query_as::<_, ProductWithSlug>(QUERY_PRODUCTS_BYSLUG)
         .bind(slug)
         .fetch_all(pool)
         .await
@@ -78,5 +78,70 @@ pub async fn get_product_by_slug_repository(
             ConfigError::InternalServerError(format!("Error fetching product by slug: {}", e))
         })?;
 
-    Ok(products)
+    Ok(products_slug)
+}
+
+//GET /api/v1/products/sku/:sku
+const QUERY_PRODUCTS_SKU: &str = r#"
+    SELECT id, name, sku FROM products
+    WHERE sku ILIKE '%' || $1 || '%'
+    ORDER BY
+        CASE
+            WHEN sku= $1 THEN 0
+            WHEN sku LIKE $1 || '-%' THEN 1
+            WHEN sku LIKE $1 || '%-' THEN 2
+            WHEN sku LIKE '%-' || $1 || '-%' THEN 3
+            ELSE 4
+        END,
+        sku
+"#;
+
+pub async fn get_product_by_sku_repository(
+    pool: &PgPool,
+    sku: String,
+) -> Result<Vec<ProductWithSku>, ConfigError> {
+    let products_sku = sqlx::query_as::<_, ProductWithSku>(QUERY_PRODUCTS_SKU)
+        .bind(sku)
+        .fetch_all(pool)
+        .await
+        .map_err(|e| {
+            ConfigError::InternalServerError(format!("Error fetching product by sku: {}", e))
+        })?;
+
+    Ok(products_sku)
+}
+
+//POST /api/v1/products
+const QUERY_INSERT_PRODUCTS: &str = r#"
+INSERT INTO products (id, sku, name, slug, description, category_id, brand_id, price, stock_quantity, status, created_at)
+VALUES (gen_random_uuid(), $1, $2, $3, $4, $5, $6, $7, $8, $9, NOW())
+RETURNING * "#;
+pub async fn create_product_repository(
+    pool: &PgPool,
+    product: CreateProduct,
+) -> Result<Product, ConfigError> {
+    //let price_normalized = product.price.with_scale(2);
+    let result = sqlx::query_as::<_, Product>(QUERY_INSERT_PRODUCTS)
+        .bind(product.sku)
+        .bind(product.name)
+        .bind(product.slug)
+        .bind(product.description)
+        .bind(product.category_id)
+        .bind(product.brand_id)
+        .bind(product.price.with_scale(2))
+        .bind(product.stock_quantity)
+        .bind(product.status)
+        .fetch_one(pool)
+        .await;
+    match &result {
+        Ok(p) => println!("✅ Producto creado: {:?}", p),
+        Err(e) => println!("❌ Error BD: {}", e),
+    }
+
+    result.map_err(|e| ConfigError::InternalServerError(format!("{}", e)))
+
+    //     .map_err(|error| {
+    //         ConfigError::InternalServerError(format!("Error create product: {}", error))
+    //     })?;
+    // Ok(product)
 }
