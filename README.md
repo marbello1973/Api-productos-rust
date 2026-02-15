@@ -10,7 +10,7 @@ http://0.0.0.0:3000
 
 ### Productos
 
-- GET /api/v1/products ![Chulito Verde](https://upload.wikimedia.org)
+- GET /api/v1/products ![Hecho](https://img.shields.io/badge/Hecho-Verde)
 - GET /api/v1/products/:id
 - GET /api/v1/products/slug/:slug
 - GET /api/v1/products/sku/:sku
