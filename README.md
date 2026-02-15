@@ -1,71 +1,61 @@
-# API PRODUCTOS
+# 🛒 API PRODUCTOS
 
-## RESTful API endpoints
+### RUST - AXUM - POSTGRESQL
 
-> Url principal
+> **Base URL:** `http://0.0.0.0:3000`  
+> **Estado Global:** `Arc<DashMap<K, V>>` para alta concurrencia.
 
-```
-http://0.0.0.0:3000
-```
+---
 
-### Productos
+## 📦 Endpoints de Productos
 
-- [x] GET /api/v1/products ✔️
-- GET /api/v1/products/:id ✔️
-- GET /api/v1/products/slug/ ✔️
-- GET /api/v1/products/sku/sku
-- POST /api/v1/products
-- PUT /api/v1/products/:id
-- PATCH /api/v1/products/:id
-- DELETE /api/v1/products/:id (soft delete)
+| Método   | Endpoint                      | Descripción        | Estado                                 |
+| :------- | :---------------------------- | :----------------- | :------------------------------------- |
+| `GET`    | `/api/v1/products`            | Listar todos       | [x] ![Ready](https://img.shields.io)   |
+| `GET`    | `/api/v1/products/:id`        | Buscar por ID      | [x] ![Ready](https://img.shields.io)   |
+| `GET`    | `/api/v1/products/slug/:slug` | Buscar por Slug    | [x] ![Ready](https://img.shields.io)   |
+| `GET`    | `/api/v1/products/sku/:sku`   | Buscar por SKU     | [ ] ![Pending](https://img.shields.io) |
+| `POST`   | `/api/v1/products`            | Crear nuevo        | [ ] ![Pending](https://img.shields.io) |
+| `PUT`    | `/api/v1/products/:id`        | Actualizar total   | [ ] ![Pending](https://img.shields.io) |
+| `PATCH`  | `/api/v1/products/:id`        | Actualizar parcial | [ ] ![Pending](https://img.shields.io) |
+| `DELETE` | `/api/v1/products/:id`        | Soft Delete        | [ ] ![Pending](https://img.shields.io) |
 
-### Reseñas
+---
 
-- GET /api/v1/products/:id/reviews
-- POST /api/v1/products/:id/reviews
-- GET /api/v1/reviews/:id
-- PUT /api/v1/reviews/:id
-- DELETE /api/v1/reviews/:id
+## 💬 Reseñas (Reviews)
 
-### Marcas
+| Método | Endpoint                       | Descripción                | Estado                                     |
+| :----- | :----------------------------- | :------------------------- | :----------------------------------------- |
+| `GET`  | `/api/v1/products/:id/reviews` | Ver reseñas de un producto | [ ] ![In Progress](https://img.shields.io) |
+| `POST` | `/api/v1/products/:id/reviews` | Agregar reseña             | [ ] ![Pending](https://img.shields.io)     |
+| `GET`  | `/api/v1/reviews/:id`          | Detalle de reseña          | [ ] ![Pending](https://img.shields.io)     |
 
-- GET /api/v1/brands
-- GET /api/v1/brands/:id
-- GET /api/v1/brands/slug/:slug
-- POST /api/v1/brands
-- PUT /api/v1/brands/:id
-- DELETE /api/v1/brands/:id
-- GET /api/v1/brands/:id/products
+---
 
-### Categorias
+## 🏷️ Marcas y Categorías
 
-- GET /api/v1/categories
-- GET /api/v1/categories/:id
-- GET /api/v1/categories/slug/:slug
-- POST /api/v1/categories
-- PUT /api/v1/categories/:id
-- DELETE /api/v1/categories/:id
-- GET /api/v1/categories/:id/products
+| Método | Endpoint                      | Relación            | Estado                                 |
+| :----- | :---------------------------- | :------------------ | :------------------------------------- |
+| `GET`  | `/api/v1/brands`              | Listar marcas       | [ ] ![Pending](https://img.shields.io) |
+| `GET`  | `/api/v1/categories`          | Listar categorías   | [ ] ![Pending](https://img.shields.io) |
+| `GET`  | `/api/v1/brands/:id/products` | Productos por marca | [ ] ![Pending](https://img.shields.io) |
 
-### Todos en GET /api/v1/products con query params
+---
 
-- GET /api/v1/products?
-  -     category_id=&          // Filtrar por categoría ID
-  -     category_slug=&        // Filtrar por slug de categoría
-  -     brand_id=&             // Filtrar por marca ID
-  -     brand_slug=&           // Filtrar por slug de marca
-  -     min_price=&            // Precio mínimo
-  -     max_price=&            // Precio máximo
-  -     search=&               // Búsqueda en nombre/descripción
-  -     status=&               // active/inactive/draft
-  -     in_stock=&             // true/false
-  -     featured=&             // Productos destacados
-  -     bestsellers            // Más vendidos
+## 🔍 Filtros (Query Params)
 
-### Endpoints adicionals utiles
+_Implementados en `GET /api/v1/products?`_
 
-- GET /api/v1/products/stats // Estadísticas (total, por categoría, etc)
-- GET /api/v1/products/featured // Productos destacados
-- GET /api/v1/products/bestsellers // Más vendidos
-- GET /api/v1/products/recent // Productos recientes
-- GET /api/v1/products/related/:id // Productos relacionados
+- [x] `category_id` / `category_slug`
+- [ ] `brand_id` / `brand_slug`
+- [ ] `min_price` / `max_price`
+- [ ] `search` (Búsqueda por texto)
+- [ ] `status` (active/inactive/draft)
+
+---
+
+## 📈 Estadísticas y Especiales
+
+- [ ] `GET /api/v1/products/stats` (Métricas DashMap)
+- [ ] `GET /api/v1/products/featured` (Destacados)
+- [ ] `GET /api/v1/products/recent` (Novedades)
