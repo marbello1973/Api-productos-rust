@@ -14,7 +14,7 @@
 | `GET`    | `/api/v1/products`            | Listar todos       | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-fedcba)   |
 | `GET`    | `/api/v1/products/:id`        | Buscar por ID      | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-fedcba)   |
 | `GET`    | `/api/v1/products/slug/:slug` | Buscar por Slug    | [x] ![Ready](https://img.shields.io/badge/coverage-75%25-fedcba)   |
-| `GET`    | `/api/v1/products/sku/:sku`   | Buscar por SKU     | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
+| `GET`    | `/api/v1/products/sku/:sku`   | Buscar por SKU     | [x] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
 | `POST`   | `/api/v1/products`            | Crear nuevo        | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
 | `PUT`    | `/api/v1/products/:id`        | Actualizar total   | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
 | `PATCH`  | `/api/v1/products/:id`        | Actualizar parcial | [ ] ![Pending](https://img.shields.io/badge/coverage-00%25-ff00ff) |
